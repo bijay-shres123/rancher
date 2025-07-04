@@ -20,13 +20,24 @@ sudo systemctl start firewalld
 ## Step 1: Install k3s (without Traefik)
 
 ```bash
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik --write-kubeconfig-mode=644 --kube-apiserver-arg=audit-log-path=/var/log/audit.log" sh -
 ```
 
 Verify k3s running:
 
 ```bash
 sudo kubectl get nodes
+```
+
+Enable kubectl access
+```bash
+mkdir -p ~/.kube cp /etc/rancher/k3s/k3s.yaml ~/.kube/config chmod 600 /.kube/config export KUBECONFIG=/.kube/config
+```
+
+
+Connect to lens
+```bash
+cat ~/.kube/config replace server: https://127.0.0.1:6443 -> https://:6443 in the config file
 ```
 
 ---
