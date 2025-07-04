@@ -28,9 +28,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik --write-kubec
 
 Verify k3s running:
 
-```bash
-sudo kubectl get nodes
-```
+
 ```bash
 # Ensure the directory exists (idempotent)
 mkdir -p ~/.kube
@@ -47,6 +45,10 @@ export KUBECONFIG=~/.kube/config
 # Make KUBECONFIG persistent for future sessions (optional but recommended)
 echo 'export KUBECONFIG=~/.kube/config' >> ~/.bashrc
 source ~/.bashrc # Apply changes immediately
+```
+
+```bash
+sudo kubectl get nodes
 ```
 
 Connect to lens
