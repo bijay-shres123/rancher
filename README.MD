@@ -93,6 +93,8 @@ server: https://127.0.0.1:6443 -> https://<your-server-ip>:6443
 ## Step 2: Install NGINX Ingress Controller
 
 ```bash
+#create a namespace for ingress-nginx
+
 kubectl create namespace ingress-nginx
 # install helm
 curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
