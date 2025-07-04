@@ -20,16 +20,6 @@ sudo dnf install -y firewalld
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
-## Step 1: Install k3s (without Traefik)
-
-```bash
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik --write-kubeconfig-mode=644 --kube-apiserver-arg=audit-log-path=/var/log/audit.log" sh -
-```
-
-Verify k3s running:
-```bash
-systemctl status k3s
-```
 ## Configure Firewalld (Before Cert Manager or Ingress)
 ### Open necessary ports
 ```bash
@@ -52,6 +42,17 @@ ip link show | grep -E "(cni|flannel)"
 sudo firewall-cmd --reload
 sudo systemctl restart firewalld  # 🔥 IMPORTANT!
 ```
+## Step 1: Install k3s (without Traefik)
+
+```bash
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik --write-kubeconfig-mode=644 --kube-apiserver-arg=audit-log-path=/var/log/audit.log" sh -
+```
+
+Verify k3s running:
+```bash
+systemctl status k3s
+```
+
 
 ```bash
 # Ensure the directory exists (idempotent)
