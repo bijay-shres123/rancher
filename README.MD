@@ -8,7 +8,7 @@
 * AlmaLinux server (clean setup)
 * Domain `rancher.yourdomain.com` pointing to your server IP (e.g., yourip : 12x.34.56.xx)
 * Root or sudo access to server
-* `kubectl`, `helm` installed
+
 
 ---
 ## Step 0: Install & Enable Firewalld (Required for SSL and Ingress)
