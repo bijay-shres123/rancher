@@ -27,7 +27,9 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik --write-kubec
 ```
 
 Verify k3s running:
-
+```bash
+systemctl status k3s
+```
 
 ```bash
 # Ensure the directory exists (idempotent)
