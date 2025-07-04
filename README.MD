@@ -209,7 +209,7 @@ cert-manager.io/cluster-issuer: letsencrypt-prod
 ```
 🚨CRITICAL STEP BEFORE MOVING FORWARD
 
-is set (remove `cert-manager.io/issuer` or `cert-manager.io/issuer-kind` if present).
+(remove `cert-manager.io/issuer` or `cert-manager.io/issuer-kind`).
 ```yaml
 #remove these two annotations
 cert-manager.io/issuer
