@@ -26,20 +26,24 @@ sudo kubectl get nodes
 
 ---
 ## Configure Firewalld (Before Cert Manager or Ingress)
-# Open necessary ports
+### Open necessary ports
+```bash
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --permanent --add-port=6443/tcp
 sudo firewall-cmd --permanent --add-port=8472/udp
 sudo firewall-cmd --permanent --add-masquerade
-
-# Allow pod subnet traffic (adjust if different)
+```
+### Allow pod subnet traffic (adjust if different)
+```bash
 sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.42.0.0/16" accept'
 sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.43.0.0/16" accept'
-
-# Apply changes and restart
+```
+### Apply changes and restart
+```bash
 sudo firewall-cmd --reload
 sudo systemctl restart firewalld  # 🔥 IMPORTANT!
+```
 
 
 
