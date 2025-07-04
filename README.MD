@@ -48,7 +48,7 @@ source ~/.bashrc # Apply changes immediately
 ```
 
 ```bash
-sudo kubectl get nodes
+kubectl get nodes
 ```
 
 Connect to lens
@@ -85,6 +85,8 @@ sudo systemctl restart firewalld  # 🔥 IMPORTANT!
 
 ```bash
 kubectl create namespace ingress-nginx
+# install helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 
 
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
