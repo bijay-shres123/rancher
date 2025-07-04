@@ -185,7 +185,9 @@ helm install rancher rancher-stable/rancher \
   --set ingress.ingressClassName=nginx \
   --set replicas=1 \
   --set certmanager.install=false \
-  --set ingress.extraAnnotations."cert-manager\.io/cluster-issuer"=letsencrypt-prod
+  --set ingress.extraAnnotations."cert-manager\.io/cluster-issuer"=letsencrypt-prod \
+  --set ingress.extraAnnotations."cert-manager\.io/issuer"="" \
+  --set ingress.extraAnnotations."cert-manager\.io/issuer-kind"=""
 ```
 
 ---
