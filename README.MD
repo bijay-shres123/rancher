@@ -135,7 +135,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    email: your-email@gmail.com # 🔥 IMPORTANT!
+    email: your-email@gmail.com # 🔥 IMPORTANT use your valid email!
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod
@@ -181,7 +181,7 @@ Install Rancher:
 ```bash
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.<yourdomaion>.pro \
+  --set hostname=rancher.<yourdomaion>.pro \ #🫲dont forget to change the hostname here
   --set ingress.ingressClassName=nginx \
   --set replicas=1 \
   --set certmanager.install=false \
