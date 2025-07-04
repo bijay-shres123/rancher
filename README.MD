@@ -53,7 +53,6 @@ cat ~/.kube/config replace server: https://127.0.0.1:6443 -> https://:6443 in th
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --permanent --add-port=6443/tcp
-sudo firewall-cmd --permanent --add-port=8472/udp
 sudo firewall-cmd --permanent --add-masquerade
 
 # Add flannel interface to trusted zone
