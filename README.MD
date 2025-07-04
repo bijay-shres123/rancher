@@ -11,7 +11,12 @@
 * `kubectl`, `helm` installed
 
 ---
-
+#Step 0: Install & Enable Firewalld (Required for SSL and Ingress)
+```bash
+sudo dnf install -y firewalld
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+```
 ## Step 1: Install k3s (without Traefik)
 
 ```bash
