@@ -13,6 +13,9 @@
 ---
 ## Step 0: Install & Enable Firewalld (Required for SSL and Ingress)
 ```bash
+
+sudo dnf update -y
+
 sudo dnf install -y firewalld
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
