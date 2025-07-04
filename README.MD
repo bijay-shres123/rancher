@@ -46,11 +46,7 @@ sudo firewall-cmd --permanent --zone=trusted --add-interface=flannel.1
 # If you're using a different CNI, check with:
 ip link show | grep -E "(cni|flannel)"
 ```
-### Allow pod subnet traffic (adjust if different)
-```bash
-sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.42.0.0/16" accept'
-sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.43.0.0/16" accept'
-```
+
 ### Apply changes and restart
 ```bash
 sudo firewall-cmd --reload
