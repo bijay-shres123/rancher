@@ -38,6 +38,13 @@ sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --permanent --add-port=6443/tcp
 sudo firewall-cmd --permanent --add-port=8472/udp
 sudo firewall-cmd --permanent --add-masquerade
+
+# Add flannel interface to trusted zone
+sudo firewall-cmd --permanent --zone=trusted --add-interface=cni0
+sudo firewall-cmd --permanent --zone=trusted --add-interface=flannel.1
+
+# If you're using a different CNI, check with:
+ip link show | grep -E "(cni|flannel)"
 ```
 ### Allow pod subnet traffic (adjust if different)
 ```bash
