@@ -33,6 +33,9 @@ sudo firewall-cmd --permanent --add-masquerade
 sudo firewall-cmd --permanent --zone=trusted --add-interface=cni0
 sudo firewall-cmd --permanent --zone=trusted --add-interface=flannel.1
 
+# check list of open ports 
+sudo firewall-cmd --list-ports
+
 # If you're using a different CNI, check with:
 ip link show | grep -E "(cni|flannel)"
 ```
