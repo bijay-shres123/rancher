@@ -30,6 +30,28 @@ Verify k3s running:
 ```bash
 systemctl status k3s
 ```
+## Configure Firewalld (Before Cert Manager or Ingress)
+### Open necessary ports
+```bash
+sudo firewall-cmd --permanent --add-port=10250/tcp
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --permanent --add-port=6443/tcp
+sudo firewall-cmd --permanent --add-masquerade
+
+# Add flannel interface to trusted zone
+sudo firewall-cmd --permanent --zone=trusted --add-interface=cni0
+sudo firewall-cmd --permanent --zone=trusted --add-interface=flannel.1
+
+# If you're using a different CNI, check with:
+ip link show | grep -E "(cni|flannel)"
+```
+
+### Apply changes and restart
+```bash
+sudo firewall-cmd --reload
+sudo systemctl restart firewalld  # 🔥 IMPORTANT!
+```
 
 ```bash
 # Ensure the directory exists (idempotent)
@@ -61,27 +83,6 @@ server: https://127.0.0.1:6443 -> https://<your-server-ip>:6443
 ```
 
 ---
-## Configure Firewalld (Before Cert Manager or Ingress)
-### Open necessary ports
-```bash
-sudo firewall-cmd --permanent --add-port=80/tcp
-sudo firewall-cmd --permanent --add-port=443/tcp
-sudo firewall-cmd --permanent --add-port=6443/tcp
-sudo firewall-cmd --permanent --add-masquerade
-
-# Add flannel interface to trusted zone
-sudo firewall-cmd --permanent --zone=trusted --add-interface=cni0
-sudo firewall-cmd --permanent --zone=trusted --add-interface=flannel.1
-
-# If you're using a different CNI, check with:
-ip link show | grep -E "(cni|flannel)"
-```
-
-### Apply changes and restart
-```bash
-sudo firewall-cmd --reload
-sudo systemctl restart firewalld  # 🔥 IMPORTANT!
-```
 
 
 
