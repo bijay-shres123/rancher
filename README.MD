@@ -99,7 +99,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    email: your-email@gmail.com 
+    email: your-email@gmail.com # 🔥 IMPORTANT!
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod
