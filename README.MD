@@ -51,7 +51,7 @@ source ~/.bashrc # Apply changes immediately
 kubectl get nodes
 ```
 
-Connect to lens
+Connect to lens( 👓 optional)
 ```bash
 cat ~/.kube/config replace server: https://127.0.0.1:6443 -> https://:6443 in the config file
 ```
