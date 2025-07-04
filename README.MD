@@ -54,8 +54,8 @@ kubectl get nodes
 Connect to lens( 👓 optional)
 ```bash
 cat ~/.kube/config 
-on the config file replace 
-server: https://127.0.0.1:6443 -> https://:6443 
+#on the config file replace 
+server: https://127.0.0.1:6443 -> https://<your-server-ip>:6443 
 ```
 
 ---
