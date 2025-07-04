@@ -205,9 +205,14 @@ Ensure **only**:
 ```yaml
 cert-manager.io/cluster-issuer: letsencrypt-prod
 ```
+🚨CRITICAL STEP BEFORE MOVING FORWARD
 
 is set (remove `cert-manager.io/issuer` or `cert-manager.io/issuer-kind` if present).
-
+```yaml
+#remove these two annotations
+cert-manager.io/issuer
+cert-manager.io/issuer-kind
+```
 ---
 
 ## Step 7: Monitor Certificate Issuance
@@ -230,7 +235,7 @@ kubectl get secret tls-rancher-ingress -n cattle-system -o jsonpath='{.data.tls\
 Issuer should be Let's Encrypt, e.g.:
 
 ```
-issuer= /C=US/O=Let's Encrypt/CN=R3
+issuer= /C=US/O=Let's Encrypt/CN=R3 # ✅ Must verify
 ```
 
 ---
@@ -240,7 +245,7 @@ issuer= /C=US/O=Let's Encrypt/CN=R3
 Open in browser:
 
 ```
-https://rancher.yourdomain.pro
+https://rancher.<yourdomain>.pro
 ```
 
 You should see a valid SSL certificate issued by Let's Encrypt.
