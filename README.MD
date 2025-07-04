@@ -31,15 +31,23 @@ Verify k3s running:
 ```bash
 sudo kubectl get nodes
 ```
-
-Enable kubectl access
 ```bash
-mkdir -p ~/.kube 
-cp /etc/rancher/k3s/k3s.yaml ~/.kube/config 
-chmod 600 /.kube/config 
-export KUBECONFIG=/.kube/config
-```
+# Ensure the directory exists (idempotent)
+mkdir -p ~/.kube
 
+# Copy the config file with sudo
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+
+# Set correct permissions (note the ~)
+chmod 600 ~/.kube/config
+
+# Set the KUBECONFIG environment variable (note the ~)
+export KUBECONFIG=~/.kube/config
+
+# Make KUBECONFIG persistent for future sessions (optional but recommended)
+echo 'export KUBECONFIG=~/.kube/config' >> ~/.bashrc
+source ~/.bashrc # Apply changes immediately
+```
 
 Connect to lens
 ```bash
