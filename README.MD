@@ -31,7 +31,10 @@ sudo kubectl get nodes
 
 Enable kubectl access
 ```bash
-mkdir -p ~/.kube cp /etc/rancher/k3s/k3s.yaml ~/.kube/config chmod 600 /.kube/config export KUBECONFIG=/.kube/config
+mkdir -p ~/.kube 
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/config 
+chmod 600 /.kube/config 
+export KUBECONFIG=/.kube/config
 ```
 
 
