@@ -36,6 +36,7 @@ sudo systemctl status firewalld
 ```bash
 sudo firewall-cmd --permanent --add-port=10250/tcp
 sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=8080/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --permanent --add-port=6443/tcp
 sudo firewall-cmd --permanent --add-masquerade
