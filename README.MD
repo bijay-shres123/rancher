@@ -255,11 +255,10 @@ Check Certificate resource created by Rancher:
 
 ```bash
 kubectl get certificate tls-rancher-ingress -n cattle-system
-verify:
-![certificate issuance](images/get_certificate.png)
 kubectl describe certificate tls-rancher-ingress -n cattle-system
 ```
-
+verify:
+![ingress](images/get_certificate.png)
 Make sure status condition is `Ready=True`.
 
 Check TLS secret:
@@ -267,8 +266,7 @@ Check TLS secret:
 ```bash
 kubectl get secret tls-rancher-ingress -n cattle-system -o jsonpath='{.data.tls\.crt}' | base64 -d | openssl x509 -noout -issuer -subject -dates
 ```
-verify:
-![ingress](images/get_certificate.png)
+
 Issuer should be Let's Encrypt, e.g.:
 
 ```
