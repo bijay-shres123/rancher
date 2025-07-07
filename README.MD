@@ -20,6 +20,11 @@ sudo dnf install -y firewalld
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
+verify:
+```bash
+sudo systemctl stauts firewalld
+```
+
 ![firewalld status](images/firewalld_status.png)
 ## Configure Firewalld (Before Cert Manager or Ingress)
 ### Open necessary ports
@@ -34,9 +39,6 @@ sudo firewall-cmd --permanent --add-masquerade
 sudo firewall-cmd --permanent --zone=trusted --add-interface=cni0
 sudo firewall-cmd --permanent --zone=trusted --add-interface=flannel.1
 
-# check list of open ports 
-sudo firewall-cmd --list-ports
-
 # If you're using a different CNI, check with:
 ip link show | grep -E "(cni|flannel)"
 ```
@@ -46,6 +48,15 @@ ip link show | grep -E "(cni|flannel)"
 sudo firewall-cmd --reload
 sudo systemctl restart firewalld  # 🔥 IMPORTANT!
 ```
+
+# check list of open ports 
+```bash
+sudo firewall-cmd --list-ports
+```
+verify:
+![open port list](images/list_open_ports.png)
+
+
 ## Step 1: Install k3s (without Traefik)
 
 ```bash
@@ -56,7 +67,8 @@ Verify k3s running:
 ```bash
 systemctl status k3s
 ```
-
+verify:
+![k3sstatus](images/k3s_status_check.png)
 
 ```bash
 # Ensure the directory exists (idempotent)
@@ -79,6 +91,8 @@ source ~/.bashrc # Apply changes immediately
 ```bash
 kubectl get nodes
 ```
+verify:
+![kubectl status](images/kubectl_get_nodes.png)
 
 Connect to lens( 👓 optional)
 ```bash
@@ -111,7 +125,8 @@ Wait until ingress-nginx pods are `Running`:
 ```bash
 kubectl get pods -n ingress-nginx
 ```
-
+verify:
+![nginx ingress pods](images/ingress_nginx_get_pods.png)
 ---
 
 ## Step 3: Install cert-manager
@@ -133,7 +148,8 @@ Verify cert-manager pods are running:
 ```bash
 kubectl get pods -n cert-manager
 ```
-
+verify:
+![cert manager pods](images/pods_cert_manager.png)
 ---
 
 ## Step 4: Create ClusterIssuer for Let’s Encrypt
@@ -170,7 +186,8 @@ kubectl describe clusterissuer letsencrypt-prod
 ```
 
 Make sure status is `Ready=True`.
-
+verify:
+![ACME status](images/ACME.png)
 ---
 
 ## Step 5: Install Rancher with Helm
@@ -238,6 +255,8 @@ Check Certificate resource created by Rancher:
 
 ```bash
 kubectl get certificate tls-rancher-ingress -n cattle-system
+verify:
+![certificate issuance](images/get_certificate.png)
 kubectl describe certificate tls-rancher-ingress -n cattle-system
 ```
 
@@ -248,13 +267,15 @@ Check TLS secret:
 ```bash
 kubectl get secret tls-rancher-ingress -n cattle-system -o jsonpath='{.data.tls\.crt}' | base64 -d | openssl x509 -noout -issuer -subject -dates
 ```
-
+verify:
+![ingress](images/get_certificate.png)
 Issuer should be Let's Encrypt, e.g.:
 
 ```
 issuer= /C=US/O=Let's Encrypt/CN=R3 # ✅ Must verify
 ```
-
+verify:
+![ingress](images/rancher_ingress_check.png)
 ---
 
 ## Step 8: Access Rancher UI securely
