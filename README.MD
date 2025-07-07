@@ -162,7 +162,7 @@ verify:
 ## Step 4: Create ClusterIssuer for Let’s Encrypt
 
 Create a file `cluster-issuer.yaml`:
-
+#🔥 IMPORTANT use your valid email!
 ```yaml
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -170,7 +170,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    email: your-email@gmail.com # 🔥 IMPORTANT use your valid email!
+    email: your-email@gmail.com 
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod
@@ -213,7 +213,7 @@ helm repo update
 ```
 
 Install Rancher:
-# 🫲Note: Replace rancher.<yourdomain>.pro with your actual domain
+# 🫲Note: Replace rancher.yourdomain.pro with your actual domain
 ```bash
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
