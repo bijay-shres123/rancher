@@ -259,6 +259,7 @@ kubectl describe certificate tls-rancher-ingress -n cattle-system
 ```
 verify:
 ![ingress](images/get_certificate.png)
+![ingress](images/cert_detail.png)
 Make sure status condition is `Ready=True`.
 
 Check TLS secret:
