@@ -213,11 +213,11 @@ helm repo update
 ```
 
 Install Rancher:
-
+# 🫲Note: Replace rancher.<yourdomain>.pro with your actual domain
 ```bash
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.<yourdomaion>.pro \ #🫲dont forget to change the hostname here
+  --set hostname=rancher.<yourdomain>.pro \
   --set ingress.ingressClassName=nginx \
   --set replicas=1 \
   --set certmanager.install=false \
