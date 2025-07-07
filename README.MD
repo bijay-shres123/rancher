@@ -289,6 +289,10 @@ https://rancher.<yourdomain>.pro
 You should see a valid SSL certificate issued by Let's Encrypt.
 
 ---
+## Generate the default password for Rancher Dashboar
+```bash
+kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{.data.bootstrapPassword|base64decode}}{{"\n"}}'
+```
 ### if default rancher password is not available
 ```bash
 kubectl exec -n cattle-system $(kubectl get pods -n cattle-system -l app=rancher -o jsonpath='{.items[0].metadata.name}') -- reset-password
