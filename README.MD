@@ -49,11 +49,12 @@ sudo firewall-cmd --reload
 sudo systemctl restart firewalld  # 🔥 IMPORTANT!
 ```
 
-# check list of open ports 
+check list of open ports 
 ```bash
 sudo firewall-cmd --list-ports
 ```
 verify:
+
 ![open port list](images/list_open_ports.png)
 
 
