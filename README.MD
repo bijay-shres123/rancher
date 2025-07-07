@@ -20,6 +20,7 @@ sudo dnf install -y firewalld
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
+![firewalld status](images/firewalld_status.png)
 ## Configure Firewalld (Before Cert Manager or Ingress)
 ### Open necessary ports
 ```bash
@@ -216,10 +217,15 @@ Ensure **only**:
 ```yaml
 cert-manager.io/cluster-issuer: letsencrypt-prod
 ```
+
 🚨CRITICAL STEP BEFORE MOVING FORWARD
 
+
 (remove `cert-manager.io/issuer` or `cert-manager.io/issuer-kind`).
+
 ```yaml
+kubectl edit ingress rancher -n cattle-system
+
 #remove these two annotations
 cert-manager.io/issuer
 cert-manager.io/issuer-kind
