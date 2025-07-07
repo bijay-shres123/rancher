@@ -27,7 +27,7 @@ sudo systemctl start firewalld
 ```
 verify:
 ```bash
-sudo systemctl stauts firewalld
+sudo systemctl status firewalld
 ```
 
 ![firewalld status](images/firewalld_status.png)
