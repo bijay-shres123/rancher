@@ -5,7 +5,6 @@
 
 ### Prerequisites
 
-* AlmaLinux server (clean setup)
 * Domain `rancher.yourdomain.com` pointing to your server IP (e.g., yourip : 12x.34.56.xx)
 use dig command to verify:
 ```bash
